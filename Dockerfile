@@ -1,7 +1,7 @@
-FROM alpine:latest
+FROM --platform=linux/aarch64 alpine:latest
 
 MAINTAINER github.com/jorre05
-LABEL Description="kea-dhcp Docker image."
+LABEL Description="DNS (bind) Docker image."
 
 ENV DHCP4_SERVER=true
 ENV DHCP6_SERVER=false
