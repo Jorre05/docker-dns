@@ -13,6 +13,7 @@ git clone ${GITHUB_CONFIG_REPO} ${GITHUB_CLONE_DIR}
 
 echo "kopie naar config"
 cp -frp ${GITHUB_CLONE_DIR}/dns/* /config
+sed s/#LISTEN_ON#/${LISTEN_ON}/g /config/named.conf -i
 
 chown -R named:named /config
 chmod -R 755 /config
