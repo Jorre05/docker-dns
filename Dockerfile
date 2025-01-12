@@ -9,6 +9,8 @@ ENV GITHUB_REPO=
 
 RUN apk --no-cache add bind bash tzdata git
 
-COPY kea.sh /etc/kea/
+COPY named.sh /etc/named/
+COPY git.sh /etc/named/
 
-CMD ["/bin/bash", "/etc/kea/kea.sh"]
+CMD ["/bin/bash", "/etc/named/git.sh"]
+CMD ["/bin/bash", "/etc/named/named.sh"]
