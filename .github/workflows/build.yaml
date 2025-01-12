@@ -25,5 +25,5 @@ jobs:
 
       - name: 'Build Inventory Image'
         run: |
-          docker build . --tag ghcr.io/jorre05/docker-dns:latest
+          docker build --tag ghcr.io/jorre05/docker-dns:latest --platform linux/amd64,linux/aarch64 -t multi-platform .
           docker push ghcr.io/jorre05/docker-dns:latest
