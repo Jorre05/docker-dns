@@ -3,28 +3,15 @@
 # turn on bash's job control
 set -m
 
+mkdir /config
 echo "Git clone ${GITHUB_CONFIG_REPO} in ${GITHUB_CLONE_DIR}"
-rm -fr /etc/named/*
-mkdir /etc/named
 git clone ${GITHUB_CONFIG_REPO} ${GITHUB_CLONE_DIR}
-echo "Lijst in clone dir"
-ls -l ${GITHUB_CLONE_DIR}
 
-echo "Lijst in clone dir dns"
-cd ${GITHUB_CLONE_DIR}/dns
-cd ${GITHUB_CLONE_DIR}/dns
-ls -lth
+echo "kopie naar config"
+cp -frp ${GITHUB_CLONE_DIR}/dns/* /config
 
-echo "kopie naar named"
-cp -frp ${GITHUB_CLONE_DIR}/dns/* /etc/named/
-
-echo "lijst in dnamed"
-ls -l /etc/named/*
-chown -R named:named /etc/named
-chmod -R 755 /etc/named
-
-echo "na ch stuff"
-ls -l /etc/named/named.conf
+chown -R named:named /config
+chmod -R 755 /config
 
 if [ ! -d /tmp/cache ]; then
     echo "Creating cache folder"
@@ -32,8 +19,8 @@ if [ ! -d /tmp/cache ]; then
     chown named:named /tmp/cache
     chmod 755 /tmp/cache
 fi
-sleep 3600
-/usr/sbin/named -g -c /etc/named/named.conf -u named &
+
+/usr/sbin/named -g -c /config/named.conf -u named &
 
 # now we bring the primary process back into the foreground
 # and leave it there
