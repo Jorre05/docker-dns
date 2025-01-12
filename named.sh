@@ -11,7 +11,7 @@ echo "Lijst in clone dir"
 ls -l ${GITHUB_CLONE_DIR}
 
 echo "Lijst in clone dir dns"
-ls -l ${GITHUB_CLONE_DIR}/dns/*
+cd ${GITHUB_CLONE_DIR}/dns
 cd ${GITHUB_CLONE_DIR}/dns
 ls -lth
 
@@ -32,9 +32,9 @@ if [ ! -d /tmp/cache ]; then
     chown named:named /tmp/cache
     chmod 755 /tmp/cache
 fi
-
+sleep 3600
 /usr/sbin/named -g -c /etc/named/named.conf -u named &
-sh
+
 # now we bring the primary process back into the foreground
 # and leave it there
 fg %1
