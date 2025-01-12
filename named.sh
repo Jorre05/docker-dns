@@ -4,7 +4,7 @@
 set -m
 
 mkdir /config
-mkdir /data/cache
+mkdir -p /data/cache
 chown named:named /data/cache
 chmod 755 /data/cache
     
