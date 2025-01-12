@@ -11,6 +11,8 @@ ls -l ${GITHUB_CLONE_DIR}
 
 echo "Lijst in clone dir dns"
 ls -l ${GITHUB_CLONE_DIR}/dns/*
+cd ${GITHUB_CLONE_DIR}/dns
+ls -lth
 
 echo "kopie naar named"
 cp -frp ${GITHUB_CLONE_DIR}/dns/* /etc/named/
@@ -31,7 +33,7 @@ if [ ! -d /tmp/cache ]; then
 fi
 
 /usr/sbin/named -g -c /etc/named/named.conf -u named &
-
+sh
 # now we bring the primary process back into the foreground
 # and leave it there
 fg %1
