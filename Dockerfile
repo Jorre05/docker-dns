@@ -1,8 +1,4 @@
-FROM --platform=$BUILDPLATFORM alpine:latest
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM" > /log
-FROM alpine
+FROM alpine:latest
 
 MAINTAINER github.com/jorre05
 LABEL Description="DNS (bind) Docker image."
