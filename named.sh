@@ -4,6 +4,10 @@
 set -m
 
 mkdir /config
+mkdir /data/cache
+chown named:named /data/cache
+chmod 755 /data/cache
+    
 echo "Git clone ${GITHUB_CONFIG_REPO} in ${GITHUB_CLONE_DIR}"
 git clone ${GITHUB_CONFIG_REPO} ${GITHUB_CLONE_DIR}
 
@@ -12,13 +16,6 @@ cp -frp ${GITHUB_CLONE_DIR}/dns/* /config
 
 chown -R named:named /config
 chmod -R 755 /config
-
-if [ ! -d /tmp/cache ]; then
-    echo "Creating cache folder"
-    mkdir -p /tmp/cache
-    chown named:named /tmp/cache
-    chmod 755 /tmp/cache
-fi
 
 /usr/sbin/named -g -c /config/named.conf -u named &
 
