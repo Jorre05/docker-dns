@@ -36,4 +36,4 @@ jobs:
           push: true
           tags: | 
             ghcr.io/jorre05/docker-dns:latest
-          platforms: linux/amd64,linux/aarch64
+          platforms: linux/aarch64, linux/amd64
