@@ -5,6 +5,7 @@ set -m
 
 echo "Git clone ${GITHUB_CONFIG_REPO} in ${GITHUB_CLONE_DIR}"
 rm -fr /etc/named/*
+mkdir /etc/named
 git clone ${GITHUB_CONFIG_REPO} ${GITHUB_CLONE_DIR}
 echo "Lijst in clone dir"
 ls -l ${GITHUB_CLONE_DIR}
