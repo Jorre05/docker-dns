@@ -10,6 +10,6 @@ ENV GITHUB_CLONE_DIR=""
 
 RUN apk --no-cache add bind bash tzdata git
 
-COPY named.sh /etc/named/
-CMD ["/bin/bash", "/etc/named/named.sh"]
+COPY named.sh /tmp/named.sh
+CMD ["/bin/bash", "/tmp/named.sh"]
 
