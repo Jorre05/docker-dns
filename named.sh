@@ -19,7 +19,7 @@ chown -R named:named /config
 chmod -R 755 /config
 
 /usr/sbin/named -g -c /config/named.conf -u named &
-
+sleep 3600
 # now we bring the primary process back into the foreground
 # and leave it there
 fg %1
