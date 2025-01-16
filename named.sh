@@ -30,5 +30,5 @@ chown named:named /data/cache
 chmod 755 /data/cache
 
 /usr/sbin/named -g -c /config/named.conf -u named &
-
+sleep 3600
 fg %1
