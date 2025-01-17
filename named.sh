@@ -15,8 +15,6 @@ git clone ${GITHUB_CONFIG_REPO} ${GITHUB_CLONE_DIR}
 if [ ! -d /config ]; then
     echo "Aanmaken config map "
     mkdir -p /config
-    chown named:named /config
-    chmod 755 /config
 fi
 
 if [ ! -f /config/named.conf ]; then
@@ -28,6 +26,9 @@ fi
 mkdir -p /data/cache
 chown named:named /data/cache
 chmod 755 /data/cache
+
+chown -R named:named /config
+chmod -R 755 /config
 
 /usr/sbin/named -g -c /config/named.conf -u named &
 
