@@ -22,7 +22,7 @@ fi
 if [ ! -f /config/named.conf ]; then
     echo "kopie naar config"
     cp -frp ${GITHUB_CLONE_DIR}/dns/* /config
-    sed s/#LISTEN_ON#/${LISTEN_ON}/g /config/named.conf -i
+    sed "s/#LISTEN_ON#/${LISTEN_ON}/g" /config/named.conf -i
 fi
 
 mkdir -p /data/cache
@@ -30,5 +30,5 @@ chown named:named /data/cache
 chmod 755 /data/cache
 
 /usr/sbin/named -g -c /config/named.conf -u named &
-sleep 3600
+
 fg %1
